@@ -1,0 +1,25 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: stream-consumer1
+  rabbitmq:
+    host: 192.168.170.128
+    port: 5672
+    username: bryan
+    password: Yida20020225..
+    virtual-host: /             #虚拟主机地址
+  cloud:
+    stream:
+      bindings:
+        #消息输出通道
+        input:
+          destination: stream.message  #交换机名字
+        MYINPUT:
+          destination: message1
+          # 消息分组
+          group: A
+          consumer:
+            partitioned: true
+      instance-count: 1   #总共消费者的数量
+      instance-index: 0   #我是第几号

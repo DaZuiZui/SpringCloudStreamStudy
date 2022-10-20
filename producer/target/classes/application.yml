@@ -1,0 +1,22 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: stream-producer
+  rabbitmq:
+    host: 192.168.170.128
+    port: 5672
+    username: bryan
+    password: Yida20020225..
+    virtual-host: /             #虚拟主机地址
+  cloud:
+    stream:
+      bindings:
+        #消息输出通道
+        output:
+          destination: stream.message  #交换机名字
+        my_output:
+          destination: message1
+          producer:
+            partition-count: 1
+            partition-key-expression: payload
